@@ -1,0 +1,88 @@
+***Welcome to the HRR Engine tester!***
+What size vectors do you want to create? 8
+Options are:
+	encode		Encode a representation for a concept
+	decode		Decode a representation to find the concept
+	search		Find a concept in memory
+	read		Read in concepts from a file
+	convolve	Combine two base concepts using circular convolution
+	correlate	Extract a base concept from a complex concept using circular correlation
+	construct	Force construction of all base concepts of a complex concept
+	print		Print all known concepts and their representations
+	unpack		Unpack a representation into its constituent concepts
+	quit
+
+>>> encode
+Please enter name of concept to encode: red
+red	[ -0.729 , -0.107 ,  0.333 ,  0.280 , -0.170 ,  0.476 , -0.120 ,  0.096  ]
+
+>>> encode
+Please enter name of concept to encode: ball
+ball	[ -0.051 ,  0.670 ,  0.104 , -0.251 , -0.433 ,  0.387 , -0.036 , -0.054  ]
+
+>>> print
+ball	[ -0.051 ,  0.670 ,  0.104 , -0.251 , -0.433 ,  0.387 , -0.036 , -0.054  ]
+red	[ -0.729 , -0.107 ,  0.333 ,  0.280 , -0.170 ,  0.476 , -0.120 ,  0.096  ]
+
+>>> search
+Please input each value for representation. Values needed: 8
+Input here: -0.729 -0.107 0.333 0.280 -0.170 0.476 -0.120 0.096 
+Dot product of hrr and ball: 0.187
+
+Dot product of hrr and red: 1.012
+
+The concept that is most similar to the extracted concept is:
+red	[ -0.729 , -0.107 ,  0.333 ,  0.280 , -0.170 ,  0.476 , -0.120 ,  0.096  ]
+
+>>> convolve
+Input the first concept: red
+Input the second concept: ball
+The new concept is:
+ball*red	[  0.145 , -0.743 ,  0.038 ,  0.285 ,  0.590 , -0.425 ,  0.073 ,  0.057  ]
+
+>>> print
+ball	[ -0.051 ,  0.670 ,  0.104 , -0.251 , -0.433 ,  0.387 , -0.036 , -0.054  ]
+ball*red	[  0.145 , -0.743 ,  0.038 ,  0.285 ,  0.590 , -0.425 ,  0.073 ,  0.057  ]
+red	[ -0.729 , -0.107 ,  0.333 ,  0.280 , -0.170 ,  0.476 , -0.120 ,  0.096  ]
+
+>>> correlate
+Input the complex concept: red*ball
+Input the base concept: red
+
+Dot product of hrr and ball: 1.193
+
+Dot product of hrr and ball*red: -1.435
+
+Dot product of hrr and red: 0.386
+
+The concept that is most similar to the extracted concept is:
+ball	[ -0.051 ,  0.670 ,  0.104 , -0.251 , -0.433 ,  0.387 , -0.036 , -0.054  ]
+
+>>> print
+ball	[ -0.051 ,  0.670 ,  0.104 , -0.251 , -0.433 ,  0.387 , -0.036 , -0.054  ]
+ball*red	[  0.145 , -0.743 ,  0.038 ,  0.285 ,  0.590 , -0.425 ,  0.073 ,  0.057  ]
+red	[ -0.729 , -0.107 ,  0.333 ,  0.280 , -0.170 ,  0.476 , -0.120 ,  0.096  ]
+
+>>> encode
+Please enter name of concept to encode: big
+big	[ -0.287 ,  0.277 , -0.333 ,  0.676 , -0.032 , -0.085 , -0.260 , -0.040  ]
+
+>>> convolve
+Input the first concept: red*ball
+Input the second concept: big
+The new concept is:
+ball*big*red	[ -0.361 ,  0.171 , -0.357 ,  0.353 , -0.617 ,  0.210 , -0.120 ,  0.719  ]
+
+>>> unpack
+Input the name of the concept to unpack: big*red*ball
+ball	[ -0.051 ,  0.670 ,  0.104 , -0.251 , -0.433 ,  0.387 , -0.036 , -0.054  ]
+ball*big	[  0.255 , -0.127 ,  0.227 , -0.235 ,  0.474 , -0.079 ,  0.046 , -0.590  ]
+ball*big*red	[ -0.361 ,  0.171 , -0.357 ,  0.353 , -0.617 ,  0.210 , -0.120 ,  0.719  ]
+ball*red	[  0.145 , -0.743 ,  0.038 ,  0.285 ,  0.590 , -0.425 ,  0.073 ,  0.057  ]
+big	[ -0.287 ,  0.277 , -0.333 ,  0.676 , -0.032 , -0.085 , -0.260 , -0.040  ]
+big*red	[  0.498 , -0.371 ,  0.178 , -0.556 , -0.030 , -0.006 ,  0.597 , -0.314  ]
+red	[ -0.729 , -0.107 ,  0.333 ,  0.280 , -0.170 ,  0.476 , -0.120 ,  0.096  ]
+
+>>> quit
+
+EXIT
